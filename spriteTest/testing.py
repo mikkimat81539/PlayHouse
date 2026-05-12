@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 # SCREEN
 screen = pygame.display.set_mode((500, 300))
 
-# SPRITE
+# SPRITE -- create sprite class
 class Smile(pygame.sprite.Sprite):
 	def __init__(self, x_pos, y_pos, width, height, color, image):
 		super().__init__()
@@ -18,10 +18,12 @@ class Smile(pygame.sprite.Sprite):
 		self.image.blit(image, self.rect)
 
 
-add_sprite = pygame.sprite.Group()
+add_sprite = pygame.sprite.Group() # create sprite container
 
+# Add spritesheet image file
 spriteImg = pygame.image.load("smileSprite.png").convert_alpha() # spriteImg = whole pizza
 
+# Cut up the image file
 # subsurface = one slice
 sprite1 = spriteImg.subsurface((0, 0, 32, 32))
 sprite2 = spriteImg.subsurface((32, 0, 32, 32))
@@ -30,13 +32,13 @@ sprite4 = spriteImg.subsurface((96, 0, 32, 32))
 sprite5 = spriteImg.subsurface((128, 0, 32, 32))
 sprite6 = spriteImg.subsurface((160, 0, 32, 32))
 
-
+# store in a list
 spriteList = [sprite1, sprite2, sprite3, sprite4, sprite5, sprite6]
 
 # Smile() = person eating the slice
-smile_sprite = Smile(32, 0, 32, 32, "red", sprite1)
+smile_sprite = Smile(0, 0, 32, 32, "red", sprite1) # grab the sprite 
 
-add_sprite.add(smile_sprite)
+add_sprite.add(smile_sprite) # add it to sprite group
 
 sprite_index = 0
 
