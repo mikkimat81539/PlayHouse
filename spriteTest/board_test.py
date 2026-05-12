@@ -35,15 +35,23 @@ colorList = ["red", "blue", "green", "purple", "white", "black", "teal"]
 container = pygame.sprite.Group()
 
 # MATRIX
-matrix_data = [1, 0, 0, 1, 1]
+matrix_data = [[1, 1, 1, 1, 1, 1, 1], 
+		[1, 0, 0, 0, 0, 0, 1],
+		[1, 0, 0, 0, 0, 0, 1],
+		[1, 0, 0, 0, 0, 0, 1],
+		[1, 1, 1, 1, 1, 1, 1]]
 
-x = 200
-y = 200
+init_x = 200
+init_y = 200
 
+y = init_y
 for row in matrix_data:
-	if row != 0:
-		container.add(BoardGame(x, y, 50, 50, random.choice(colorList)))
-	x += 50
+	x = init_x
+	for i in row:
+		if i != 0:
+			container.add(BoardGame(x, y, 50, 50, random.choice(colorList)))
+		x += 50
+	y += 50
 
 
 # MAIN LOOP
