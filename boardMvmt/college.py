@@ -1,7 +1,7 @@
 import random
 
 class STATS:
-	def __init__(self, name, age, major, debt):
+	def __init__(self, name):
 		self.name = name
 		self.age = 18
 		self.major = "undecided"
@@ -18,13 +18,15 @@ def scholarship():
 		print("You got a full ride scholarship")	
 		
 
-def loan():
-	pass
+def loan(player, tuition):
+	player.debt = tuition
+
+	return tuition
 
 def parents():
 	dice = random.randint(1, 20)
 	if dice <= 10:
-		print("Your parents choice not to support you.")
+		print("Your parents chose not to support you.")
 	elif 10 < dice <= 17:
 		print("Your parents agreed to pay half")
 
@@ -33,6 +35,18 @@ def parents():
  
 
 def main():
+	print("PLAYER STATS\n")
+
+	player = STATS("Alex")
+
+	tuition = 106000
+
+	print(f"Name: {player.name}\n")
+	print(f"Age: {player.age}\n")
+	print(f"Major: {player.major}\n")
+	print(f"Debt: {player.debt}\n")
+
+
 	print("You graduate high school, and start college.\n")
 	print("The tuition for university is $106,000.\n\nSelect your payment option.")
 
@@ -44,7 +58,9 @@ def main():
 		scholarship()
 
 	elif paymentOption == "LOAN":
-		loan()
+		DEBT = loan(player, tuition)
+		
+		print(f"updated debt is {DEBT}")
 
 	elif paymentOption == "PARENTS":
 		parents()
